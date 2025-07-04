@@ -23,7 +23,6 @@ const RnBiometricTracker = RnBiometricTrackerModule
       }
     );
 
-
 function enableBiometric(): Promise<object> {
   return RnBiometricTracker.enableBiometric();
 }
