@@ -1,6 +1,6 @@
 {
   "name": "rn-biometric-tracker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "rn-biometric-tracker is a lightweight React Native library used to track biometric changes on the device. It enables you to detect when a user adds or removes biometric data (like fingerprint or face unlock) after tracking is enabled.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
