@@ -9,6 +9,32 @@
   return [NSString stringWithFormat:@"%@.biometric.state", bundleID];
 }
 
++ (void)initialize {
+  if (self == [KeychainManager class]) {
+    [self initializeKeychainStateIfNeeded];
+  }
+}
+
++ (void)initializeKeychainStateIfNeeded {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString *launchKey = @"has_launched_before";
+
+  if (![defaults boolForKey:launchKey]) {
+    // First launch after install — wipe Keychain
+    NSString *key = [self biometricKey];
+
+    NSDictionary *query = @{
+      (__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
+      (__bridge id)kSecAttrService: key
+    };
+
+    SecItemDelete((__bridge CFDictionaryRef)query);
+
+    [defaults setBool:YES forKey:launchKey];
+    [defaults synchronize];
+  }
+}
+
 + (NSDictionary *)enableBiometric {
   LAContext *context = [[LAContext alloc] init];
   NSError *error = nil;
@@ -112,8 +138,8 @@
   // Evaluate policy to ensure context is valid
   if (![context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
     return @{
-      @"resultCode": @(BiometricNotEnabled),
-      @"message": @"Biometric not available"
+      @"resultCode": @(BiometricChangeDetected),
+      @"message": @"Biometric data has changed"
     };
   }
 
@@ -121,7 +147,7 @@
   if (!domainStateData) {
     return @{
       @"resultCode": @(BiometricChangeDetected),
-      @"message": @"Unable to read current biometric state"
+      @"message": @"Biometric data has changed"
     };
   }
 
