@@ -1,4 +1,5 @@
 #import "RnBiometricTracker.h"
+#import "KeychainManager.h"
 
 @implementation RnBiometricTracker
 
@@ -14,13 +15,28 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(multiply:(double)a
-                  b:(double)b
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject) {
-    NSNumber *result = @(a * b);
+RCT_EXPORT_METHOD(enableBiometric: (RCTPromiseResolveBlock)resolve
+                    reject:(RCTPromiseRejectBlock)reject) {
+  NSDictionary *result = [KeychainManager enableBiometric];
+  resolve(result);
+}
+
+RCT_EXPORT_METHOD(disableBiometric: (RCTPromiseResolveBlock)resolve
+                    reject:(RCTPromiseRejectBlock)reject) {
+    NSDictionary *result = [KeychainManager disableBiometric];
     resolve(result);
 }
 
+RCT_EXPORT_METHOD(isBiometricEnabled: (RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject) {
+  BOOL enabled = [KeychainManager isBiometricEnabled];
+  resolve(@(enabled));
+}
+
+RCT_EXPORT_METHOD(isBiometricChanged: (RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject) {
+  NSDictionary *result = [KeychainManager checkBiometricChange];
+  resolve(result);
+}
 
 @end
