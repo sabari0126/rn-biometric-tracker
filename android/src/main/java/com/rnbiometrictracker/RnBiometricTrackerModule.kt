@@ -81,6 +81,11 @@ class RnBiometricTrackerModule internal constructor(
         return
       }
 
+      if (isBiometricEnrolled().not()) {
+        promise.resolve(BiometricResult.BIOMETRIC_CHANGE_DETECTED.toResponse().toWritableMap())
+        return;
+      }
+
       val secretKey = keyStoreManager.getSecretKey()
       val cipher = keyStoreManager.getCipher()
       if (secretKey == null) {
