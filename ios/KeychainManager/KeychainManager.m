@@ -35,7 +35,7 @@
   }
 }
 
-+ (NSDictionary *)enableBiometric {
++ (NSDictionary *)enableBiometricTracker {
   LAContext *context = [[LAContext alloc] init];
   NSError *error = nil;
 
@@ -75,8 +75,8 @@
   }
 }
 
-+ (NSDictionary *)disableBiometric {
-  if (![self isBiometricEnabled]) {
++ (NSDictionary *)disableBiometricTracker {
+  if (![self isBiometricTrackerEnabled]) {
     return @{
       @"resultCode": @(BiometricNotEnabled),
       @"message": @"Biometric not enabled"
@@ -105,7 +105,7 @@
 }
 
 
-+ (BOOL)isBiometricEnabled {
++ (BOOL)isBiometricTrackerEnabled {
   NSString *key = [self biometricKey];
 
   NSDictionary *query = @{
@@ -125,7 +125,7 @@
 
 
 + (NSDictionary *)checkBiometricChange {
-  if (![self isBiometricEnabled]) {
+  if (![self isBiometricTrackerEnabled]) {
     return @{
       @"resultCode": @(BiometricNotEnabled),
       @"message": @"Biometric not enabled"

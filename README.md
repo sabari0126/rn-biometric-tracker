@@ -31,7 +31,7 @@ import BioTrack from 'rn-biometric-tracker';
 We can use the library functions as per below examples:
 
 ```typescript
-BioTrack.enableBiometric().then((respinse) => /* handle success */)
+BioTrack.enableBiometricTracker().then((respinse) => /* handle success */)
                         .catch((error) =>
                         /*handle error*/)
 
@@ -42,7 +42,7 @@ OR
 ```typescript
  async function () {
     try {
-        let response = await BioTrack.enableBiometric();
+        let response = await BioTrack.enableBiometricTracker();
         //handle success
     }catch(e) {
         // Handle Errors
@@ -55,19 +55,19 @@ OR
 
 | Method               | Return Type | iOS | Android |
 | -------------------- | ----------- | --- | ------- |
-| `enableBiometric`    | `Promise`   | ✅  | ✅      |
-| `disableBiometric`   | `Promise`   | ✅  | ✅      |
-| `isBiometricEnabled` | `Promise`   | ✅  | ✅      |
+| `enableBiometricTracker`    | `Promise`   | ✅  | ✅      |
+| `disableBiometricTracker`   | `Promise`   | ✅  | ✅      |
+| `isBiometricTrackerEnabled` | `Promise`   | ✅  | ✅      |
 | `isBiometricChanged` | `Promise`   | ✅  | ✅      |
 
-### `enableBiometric()`
+### `enableBiometricTracker()`
 
 Enables biometric tracking to detect biometric data changes (addition or removal).
 
 **Usage:**
 
 ```typescript
-let response = await BioTrack.enableBiometric();
+let response = await BioTrack.enableBiometricTracker();
 ```
 
 **Returns:**
@@ -79,14 +79,14 @@ let response = await BioTrack.enableBiometric();
 | 2003 | Biometric registered successfully              |
 | 2004 | Biometrics registration failed                 |
 
-### `disableBiometric()`
+### `disableBiometricTracker()`
 
 Disables biometric tracking if it was previously enabled.
 
 **Usage:**
 
 ```typescript
-let response = await BioTrack.disableBiometric();
+let response = await BioTrack.disableBiometricTracker();
 ```
 
 **Returns:**
@@ -97,14 +97,14 @@ let response = await BioTrack.disableBiometric();
 | 2006 | Biometrics deregister failed         |
 | 2007 | Biometric not enabled                |
 
-### `isBiometricEnabled()`
+### `isBiometricTrackerEnabled()`
 
 Checks whether biometric tracking is currently enabled.
 
 **Usage:**
 
 ```typescript
-let response = await BioTrack.isBiometricEnabled();
+let response = await BioTrack.isBiometricTrackerEnabled();
 ```
 
 **Returns:**

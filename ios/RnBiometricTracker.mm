@@ -15,21 +15,21 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(enableBiometric: (RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(enableBiometricTracker: (RCTPromiseResolveBlock)resolve
                     reject:(RCTPromiseRejectBlock)reject) {
-  NSDictionary *result = [KeychainManager enableBiometric];
+  NSDictionary *result = [KeychainManager enableBiometricTracker];
   resolve(result);
 }
 
-RCT_EXPORT_METHOD(disableBiometric: (RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(disableBiometricTracker: (RCTPromiseResolveBlock)resolve
                     reject:(RCTPromiseRejectBlock)reject) {
-    NSDictionary *result = [KeychainManager disableBiometric];
+    NSDictionary *result = [KeychainManager disableBiometricTracker];
     resolve(result);
 }
 
-RCT_EXPORT_METHOD(isBiometricEnabled: (RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(isBiometricTrackerEnabled: (RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject) {
-  BOOL enabled = [KeychainManager isBiometricEnabled];
+  BOOL enabled = [KeychainManager isBiometricTrackerEnabled];
   resolve(@(enabled));
 }
 

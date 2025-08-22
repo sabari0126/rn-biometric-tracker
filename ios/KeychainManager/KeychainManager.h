@@ -5,9 +5,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KeychainManager : NSObject
 
-+ (NSDictionary *)enableBiometric;
-+ (NSDictionary *)disableBiometric;
-+ (BOOL)isBiometricEnabled;
++ (NSDictionary *)enableBiometricTracker;
++ (NSDictionary *)disableBiometricTracker;
++ (BOOL)isBiometricTrackerEnabled;
 + (NSDictionary *)checkBiometricChange;
 
 @end

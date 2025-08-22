@@ -28,12 +28,12 @@ class RnBiometricTrackerModule internal constructor(
     return biometricManager.canAuthenticate(BIOMETRIC_WEAK) == BiometricManager.BIOMETRIC_SUCCESS
   }
 
-  private fun isBiometricEnabled(): Boolean {
+  private fun isBiometricTrackerEnabled(): Boolean {
     return keyStoreManager.getSecretKey() != null
   }
 
   @ReactMethod
-  override fun enableBiometric(promise: Promise) {
+  override fun enableBiometricTracker(promise: Promise) {
     try {
       if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
         promise.resolve(BiometricResult.BIOMETRIC_NOT_SUPPORTED.toResponse().toWritableMap());
@@ -51,9 +51,9 @@ class RnBiometricTrackerModule internal constructor(
   }
 
   @ReactMethod
-  override fun disableBiometric(promise: Promise) {
+  override fun disableBiometricTracker(promise: Promise) {
     try {
-      if (isBiometricEnabled().not()) {
+      if (isBiometricTrackerEnabled().not()) {
         promise.resolve(BiometricResult.BIOMETRIC_NOT_ENABLED.toResponse().toWritableMap())
         return
       }
@@ -65,9 +65,9 @@ class RnBiometricTrackerModule internal constructor(
   }
 
   @ReactMethod
-  override fun isBiometricEnabled(promise: Promise) {
+  override fun isBiometricTrackerEnabled(promise: Promise) {
     try {
-      promise.resolve(isBiometricEnabled())
+      promise.resolve(isBiometricTrackerEnabled())
     } catch (e: Exception) {
       promise.reject("BIOMETRIC_ERROR", e.message, e)
     }
@@ -76,7 +76,7 @@ class RnBiometricTrackerModule internal constructor(
   @ReactMethod
   override fun isBiometricChanged(promise: Promise) {
     try {
-      if (isBiometricEnabled().not()) {
+      if (isBiometricTrackerEnabled().not()) {
         promise.resolve(BiometricResult.BIOMETRIC_NOT_ENABLED.toResponse().toWritableMap())
         return
       }

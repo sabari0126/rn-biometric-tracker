@@ -23,16 +23,16 @@ const RnBiometricTracker = RnBiometricTrackerModule
       }
     );
 
-function enableBiometric(): Promise<object> {
-  return RnBiometricTracker.enableBiometric();
+function enableBiometricTracker(): Promise<object> {
+  return RnBiometricTracker.enableBiometricTracker();
 }
 
-function disableBiometric(): Promise<object> {
-  return RnBiometricTracker.disableBiometric();
+function disableBiometricTracker(): Promise<object> {
+  return RnBiometricTracker.disableBiometricTracker();
 }
 
-function isBiometricEnabled(): Promise<boolean> {
-  return RnBiometricTracker.isBiometricEnabled();
+function isBiometricTrackerEnabled(): Promise<boolean> {
+  return RnBiometricTracker.isBiometricTrackerEnabled();
 }
 
 function isBiometricChanged(): Promise<object> {
@@ -40,9 +40,9 @@ function isBiometricChanged(): Promise<object> {
 }
 
 const BioTrack = {
-  enableBiometric,
-  disableBiometric,
-  isBiometricEnabled,
+  enableBiometricTracker,
+  disableBiometricTracker,
+  isBiometricTrackerEnabled,
   isBiometricChanged,
 };
 

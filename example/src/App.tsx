@@ -2,27 +2,27 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import BioTrack from 'rn-biometric-tracker';
 
 export default function App() {
-  const enableBiometric = async () => {
+  const enableBiometricTracker = async () => {
     try {
-      let res = await BioTrack.enableBiometric();
+      let res = await BioTrack.enableBiometricTracker();
       console.log('res', res);
     } catch (e) {
       console.log('errr', e);
     }
   };
 
-  const disableBiometric = async () => {
+  const disableBiometricTracker = async () => {
     try {
-      let res = await BioTrack.disableBiometric();
+      let res = await BioTrack.disableBiometricTracker();
       console.log('res', res);
     } catch (e) {
       console.log('errr', e);
     }
   };
 
-  const isBiometricEnabled = async () => {
+  const isBiometricTrackerEnabled = async () => {
     try {
-      let res = await BioTrack.isBiometricEnabled();
+      let res = await BioTrack.isBiometricTrackerEnabled();
       console.log('res', res);
     } catch (e) {
       console.log('errr', e);
@@ -40,13 +40,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={enableBiometric}>
+      <TouchableOpacity style={styles.button} onPress={enableBiometricTracker}>
         <Text style={styles.buttonText}>Enable Biometric</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={disableBiometric}>
+      <TouchableOpacity style={styles.button} onPress={disableBiometricTracker}>
         <Text style={styles.buttonText}>Disable Biometric</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={isBiometricEnabled}>
+      <TouchableOpacity style={styles.button} onPress={isBiometricTrackerEnabled}>
         <Text style={styles.buttonText}>Check Biometric Status</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={isBiometricChanged}>

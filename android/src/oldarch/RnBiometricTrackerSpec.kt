@@ -7,11 +7,11 @@ import com.facebook.react.bridge.Promise
 abstract class RnBiometricTrackerSpec internal constructor(context: ReactApplicationContext) :
   ReactContextBaseJavaModule(context) {
 
-  abstract fun enableBiometric(promise: Promise)
+  abstract fun enableBiometricTracker(promise: Promise)
 
-  abstract fun disableBiometric(promise: Promise)
+  abstract fun disableBiometricTracker(promise: Promise)
 
-  abstract fun isBiometricEnabled(promise: Promise)
+  abstract fun isBiometricTrackerEnabled(promise: Promise)
 
   abstract fun isBiometricChanged(promise: Promise)
 }
