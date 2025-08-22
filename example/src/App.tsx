@@ -46,7 +46,10 @@ export default function App() {
       <TouchableOpacity style={styles.button} onPress={disableBiometricTracker}>
         <Text style={styles.buttonText}>Disable Biometric</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={isBiometricTrackerEnabled}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={isBiometricTrackerEnabled}
+      >
         <Text style={styles.buttonText}>Check Biometric Status</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={isBiometricChanged}>
