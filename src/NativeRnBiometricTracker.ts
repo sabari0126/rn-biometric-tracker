@@ -2,9 +2,9 @@ import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 
 export interface Spec extends TurboModule {
-  enableBiometric(): Promise<object>;
-  disableBiometric(): Promise<object>;
-  isBiometricEnabled(): Promise<boolean>;
+  enableBiometricTracker(): Promise<object>;
+  disableBiometricTracker(): Promise<object>;
+  isBiometricTrackerEnabled(): Promise<boolean>;
   isBiometricChanged(): Promise<object>;
 }
 
